@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Records</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 90%;
+            max-width: 600px;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #444;
+            color: #fff;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+        td a {
+            color: #00f;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>EMAIL</th>
+                <th>PASSWORD</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{record.id}}</td>
+                <td>{{record.email}}</td>
+                <td>{{record.password}}</td>
+                <td>
+                    <a href="/delete/{{record.id}}">DELETE</a>
+                    <a href="/update/{{record.id}}">UPDATE</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

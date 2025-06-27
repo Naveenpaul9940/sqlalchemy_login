@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Form</title>
+    <style>
+        body {
+            background-image: url("static/images/neon.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            border: 1px solid black;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 7px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="POST">
+        <input type="email" name="email"  placeholder="Enter email">
+        <input type="password" name="password"  placeholder="Enter password">
+        <button type="submit">UPDATE</button>
+    </form>
+</body>
+</html>
