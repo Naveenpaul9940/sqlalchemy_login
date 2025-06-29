@@ -6,6 +6,7 @@
     <title>View Records</title>
     <style>
         body {
+            background-image: url("{{url_for('static', filename = 'images/neon.jpg')}}");
             margin: 0;
             font-family: Arial, sans-serif;
             display: flex;
@@ -13,6 +14,8 @@
             align-items: center;
             height: 100vh;
             background-color: #f4f4f4;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         table {
             width: 90%;
@@ -46,6 +49,18 @@
             table {
                 font-size: 0.9rem;
             }
+
+            th{
+                font-size: 8px;
+                font-weight: 1000;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            td{
+                font-size: 8px;
+                font-weight: 1000;
+                font-family: 'Courier New', Courier, monospace;
+            }
         }
     </style>
 </head>
@@ -60,17 +75,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for record in records %}
+           
             <tr>
-                <td>{{record.id}}</td>
-                <td>{{record.email}}</td>
-                <td>{{record.password}}</td>
+                {% for i in records %}
+                <td>{{i.id}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.password}}</td>
                 <td>
-                    <a href="/delete/{{record.id}}">DELETE</a>
-                    <a href="/update/{{record.id}}">UPDATE</a>
+                    <a href="/delete/{{i.id}}">DELETE</a>
+                    <a href="/update/{{i.id}}">UPDATE</a>
                 </td>
-            </tr>
-            {% endfor %}
+                {% endfor %}
+            </tr>   
         </tbody>
     </table>
 </body>

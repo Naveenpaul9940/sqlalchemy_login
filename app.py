@@ -7,6 +7,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 db = SQLAlchemy(app)
 
+# CREATE TABLE 
 class Login(db.Model):
     id = db.Column(db.Integer, primary_key = True, autoincrement = True)
     email = db.Column(db.String, nullable = False)
@@ -15,9 +16,9 @@ class Login(db.Model):
 @app.route("/", methods = ["POST","GET"])
 def insert():
     if request.method == "POST":
-        email = request.form["email"]
-        password = request.form["password"]
-        record = Login(email = email, password = password)
+        form_email = request.form["email"]
+        form_password = request.form["password"]
+        record = Login(email = form_email, password = form_password)
         db.session.add(record)
         db.session.commit()
         db.session.close()
@@ -25,10 +26,12 @@ def insert():
     else:
         return render_template("form.html")
 
+
 @app.route("/view")
 def view():
     all_rec = Login.query.all()
     return render_template("view.html", records = all_rec)
+
 
 @app.route("/delete/<int:id>", methods = ["POST","GET"])
 def delete(id):
@@ -42,6 +45,7 @@ def delete(id):
 def update(id):
     rec = Login.query.get(id)
     if request.method == "POST":
+        # rec = [2,"sakthi@gmail.com",232321]
         rec.email = request.form["email"]
         rec.password = request.form["password"]
         db.session.commit()

@@ -6,7 +6,7 @@
     <title>Update Form</title>
     <style>
         body {
-            background-image: url("static/images/neon.jpg");
+            background-image: url("{{url_for('static', filename = 'images/neon.jpg')}}");
             background-size: cover;
             background-repeat: no-repeat;
             margin: 0;
@@ -26,16 +26,20 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         input {
-            width: 100%;
+            margin-left: 3%;
+            width: 90%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid grey;
             font-size: 1rem;
+            outline: none;
         }
         button {
-            width: 100%;
+            margin-left: 10%;
+            width: 70%;
             padding: 10px;
             border-radius: 5px;
             border: none;
@@ -43,17 +47,42 @@
             background-color: #000;
             color: #fff;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #444;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            form {
+                padding: 15px;
+            }
+            input, button {
+                font-size: 0.9rem;
+                padding: 10px;
+                width: 90%;
+
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            form {
+                width: 95%;
+                padding: 10px;
+            }
+            input, button {
+                font-size: 0.85rem;
+                padding: 6px;
+            }
         }
     </style>
 </head>
 <body>
     <form action="/" method="POST">
-        <input type="email" name="email"  placeholder="Enter email">
-        <input type="password" name="password"  placeholder="Enter password">
-        <button type="submit">UPDATE</button>
+        <input type="email" name="email" placeholder="Enter email" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit">ADD</button>
     </form>
 </body>
 </html>

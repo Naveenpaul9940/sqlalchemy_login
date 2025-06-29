@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Record</title>
+    <title>Update Form</title>
     <style>
         body {
-            background-image: url("static/images/neon.jpg");
+            background-image: url("{{url_for('static', filename = 'images/neon.jpg')}}");
             background-size: cover;
             background-repeat: no-repeat;
             margin: 0;
@@ -26,16 +26,20 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         input {
-            width: 100%;
+            margin-left: 3%;
+            width: 90%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid grey;
             font-size: 1rem;
+            outline: none;
         }
         button {
-            width: 100%;
+            margin-left: 10%;
+            width: 70%;
             padding: 10px;
             border-radius: 5px;
             border: none;
@@ -43,16 +47,42 @@
             background-color: #000;
             color: #fff;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #444;
         }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            form {
+                padding: 15px;
+            }
+            input, button {
+                font-size: 0.9rem;
+                padding: 10px;
+                width: 90%;
+
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            form {
+                width: 95%;
+                padding: 10px;
+            }
+            input, button {
+                font-size: 0.85rem;
+                padding: 6px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- rec = [2,"sakthi@gmail.com",232321] -->
     <form action="/update/{{rec.id}}" method="POST">
-        <input type="email" name="email" value="{{rec.email}}" placeholder="Enter email">
-        <input type="password" name="password" value="{{rec.password}}" placeholder="Enter password">
+        <input type="email" name="email" value="{{rec.email}}" >
+        <input type="password" name="password" value="{{rec.password}}">
         <button type="submit">UPDATE</button>
     </form>
 </body>
